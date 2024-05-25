@@ -153,13 +153,19 @@ def get_head_to_head_records(league_id, swid, espn_s2, years):
             records[away][home]['wins'] += 1
             records[home][away]['losses'] += 1
 
-    records_df = pd.DataFrame.from_dict({(i,j): records[i][j] 
+    records_df = pd.DataFrame.from_dict({(i, j): records[i][j] 
                                          for i in records.keys() 
                                          for j in records[i].keys()},
                                         orient='index')
     records_df.index = pd.MultiIndex.from_tuples(records_df.index, names=['Owner', 'Opponent'])
     records_df.reset_index(inplace=True)
-    return replace_names(records_df)
+    
+    # Group by Owner and Opponent and sum wins and losses
+    grouped_records_df = records_df.groupby(['Owner', 'Opponent']).sum().reset_index()
+    
+    return replace_names(grouped_records_df)
+
+
 
 @app.route('/')
 def home():
@@ -217,24 +223,27 @@ def records():
     all_teams_df = get_all_teams_data(league_id, swid, espn_s2, years)
     all_teams_df = replace_names(all_teams_df)
     
-    # Get box scores data to calculate highest and lowest week scores
+    # Get box scores data to calculate highest and lowest week scores for weeks 1-12
     all_box_scores = pd.DataFrame()
-    weeks = range(1, 19)
+    weeks = range(1, 13)
     for year in years:
         box_scores = get_box_scores(league_id, swid, espn_s2, year, weeks)
         all_box_scores = pd.concat([all_box_scores, box_scores], ignore_index=True)
+
+    # Filter to include only weeks 1-12
+    filtered_box_scores = all_box_scores[all_box_scores['week'].isin(weeks)]
     
-    highest_week_score = all_box_scores.loc[all_box_scores[['home_score', 'away_score']].idxmax().max()][['home_score', 'home_owners', 'year', 'week']]
-    lowest_week_score = all_box_scores.loc[all_box_scores[['home_score', 'away_score']].idxmin().min()][['home_score', 'home_owners', 'year', 'week']]
+    highest_week_score = filtered_box_scores.loc[filtered_box_scores[['home_score', 'away_score']].idxmax().max()][['home_score', 'home_owners', 'year', 'week']]
+    lowest_week_score = filtered_box_scores.loc[filtered_box_scores[['home_score', 'away_score']].idxmin().min()][['home_score', 'home_owners', 'year', 'week']]
     
-    if highest_week_score['home_score'] < all_box_scores['away_score'].max():
-        highest_week_score = all_box_scores.loc[all_box_scores['away_score'].idxmax()][['away_score', 'away_owners', 'year', 'week']]
+    if highest_week_score['home_score'] < filtered_box_scores['away_score'].max():
+        highest_week_score = filtered_box_scores.loc[filtered_box_scores['away_score'].idxmax()][['away_score', 'away_owners', 'year', 'week']]
         highest_week_score.rename({'away_score': 'score', 'away_owners': 'owners'}, inplace=True)
     else:
         highest_week_score.rename({'home_score': 'score', 'home_owners': 'owners'}, inplace=True)
     
-    if lowest_week_score['home_score'] > all_box_scores['away_score'].min():
-        lowest_week_score = all_box_scores.loc[all_box_scores['away_score'].idxmin()][['away_score', 'away_owners', 'year', 'week']]
+    if lowest_week_score['home_score'] > filtered_box_scores['away_score'].min():
+        lowest_week_score = filtered_box_scores.loc[filtered_box_scores['away_score'].idxmin()][['away_score', 'away_owners', 'year', 'week']]
         lowest_week_score.rename({'away_score': 'score', 'away_owners': 'owners'}, inplace=True)
     else:
         lowest_week_score.rename({'home_score': 'score', 'home_owners': 'owners'}, inplace=True)
