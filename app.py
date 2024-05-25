@@ -116,7 +116,7 @@ def get_teams_data(league_id, swid, espn_s2, year):
     team_data = []
     for team in league.teams:
         owners = team.owners
-        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}"] for owner in owners) if owners else "N/A"
+        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
         team_data.append({
             'year': year,
             'owners': owner_names,
