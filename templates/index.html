@@ -64,7 +64,7 @@
     <div class="container">
         <h1>Buzzcut League</h1>
         <h2>Box Scores</h2>
-        <form action="box_scores" method="post">
+        <form action="templates/box_scores" method="post">
             <label for="year">Select Year:</label>
             <select id="year" name="year">
                 {% for year in years %}
@@ -74,7 +74,7 @@
             <input type="submit" value="Get Box Scores">
         </form>
         <h2>Team Data</h2>
-        <form action="teams" method="post">
+        <form action="templates/teams" method="post">
             <label for="year">Select Year:</label>
             <select id="year" name="year">
                 {% for year in years %}
@@ -84,11 +84,11 @@
             <input type="submit" value="Get Team Data">
         </form>
         <h2>All Time Records</h2>
-        <a href="records">View Records</a>
+        <a href="templates/records">View Records</a>
         <h2>Head to Head Records</h2>
-        <a href="head_to_head">View Head to Head Records</a>
+        <a href="templates/head_to_head">View Head to Head Records</a>
         <h2>Draft Data</h2>
-        <a href="draft_data">View Draft Data</a>
+        <a href="templates/draft_data">View Draft Data</a>
     </div>
 </body>
 </html>
