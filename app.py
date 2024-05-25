@@ -175,7 +175,7 @@ def home():
     owners = get_all_owners(league_id, swid, espn_s2, years)
     return render_template('index.html', years=years, owners=owners, base_url=BASE_URL)
 
-@app.route('/templates/box_scores', methods=['GET', 'POST'])
+@app.route('/box_scores', methods=['GET', 'POST'])
 def box_scores():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
@@ -196,7 +196,7 @@ def box_scores():
 
     return render_template('box_scores.html', tables=[all_years_df.to_html(classes='data', index=False)], titles=all_years_df.columns.values, years=years, base_url=BASE_URL)
 
-@app.route('/templates/teams', methods=['GET', 'POST'])
+@app.route('/teams', methods=['GET', 'POST'])
 def teams():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
@@ -267,7 +267,7 @@ def records():
 
     return render_template('records.html', records=records)
 
-@app.route('/templates/draft_data', methods=['GET', 'POST'])
+@app.route('/draft_data', methods=['GET', 'POST'])
 def draft_data():
     years = range(2019, 2024)
     df = read_csv_files()
