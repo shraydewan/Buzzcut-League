@@ -76,7 +76,12 @@ def get_box_scores(league_id, swid, espn_s2, year, weeks):
     if os.path.exists(os.path.join(app.config['CACHE_FOLDER'], cache_file)):
         return load_cached_data(cache_file)
     
-    league = League(league_id=league_id, year=year, swid=swid, espn_s2=espn_s2)
+    try:
+        league = League(league_id=league_id, year=year, swid=swid, espn_s2=espn_s2)
+    except Exception as e:
+        app.logger.error("Failed to access league data: %s", e)
+        return pd.DataFrame()  # Return an empty DataFrame on error
+
     data = []
     for week in weeks:
         box_scores = league.box_scores(week=week)
@@ -102,11 +107,16 @@ def get_teams_data(league_id, swid, espn_s2, year):
     if os.path.exists(os.path.join(app.config['CACHE_FOLDER'], cache_file)):
         return load_cached_data(cache_file)
     
-    league = League(league_id=league_id, year=year, swid=swid, espn_s2=espn_s2)
+    try:
+        league = League(league_id=league_id, year=year, swid=swid, espn_s2=espn_s2)
+    except Exception as e:
+        app.logger.error("Failed to access league data: %s", e)
+        return pd.DataFrame()  # Return an empty DataFrame on error
+
     team_data = []
     for team in league.teams:
         owners = team.owners
-        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
+        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}"] for owner in owners) if owners else "N/A"
         team_data.append({
             'year': year,
             'owners': owner_names,
@@ -169,7 +179,7 @@ def get_head_to_head_records(league_id, swid, espn_s2, years):
     records_df.index = pd.MultiIndex.from_tuples(records_df.index, names=['Owner', 'Opponent'])
     records_df.reset_index(inplace=True)
     
-    grouped_records_df = records_df.groupby(['Owner', 'Opponent']).sum().reset_index()
+    grouped_records_df = records_df.groupby(['Owner', 'Opponent']). sum().reset_index()
     
     return replace_names(grouped_records_df)
 
@@ -184,7 +194,7 @@ def home():
         years = range(2019, 2024)
         league_id = 169486
         swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-        espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
+        espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
         owners = get_all_owners(league_id, swid, espn_s2, years)
         
         render_template_and_save('index.html', 'index.html', years=years, owners=owners)
@@ -198,7 +208,7 @@ def home():
 def box_scores():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
+    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
     weeks = range(1, 19)
 
     if request.method == 'POST':
@@ -295,7 +305,7 @@ def records():
 def head_to_head():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
+    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
     years = range(2019, 2024)
 
     if request.method == 'POST':
@@ -320,7 +330,15 @@ def draft_data():
     if request.method == 'POST':
         selected_year = request.form['year']
         if selected_year:
-            df = df[df['Year'] == int(selected_year)]
+            app.logger.info("Selected year: %s", selected_year)
+            app.logger.info("DataFrame columns: %s", df.columns)
+            selected_year = int(selected_year)
+            
+            if 'Year' not in df.columns:
+                app.logger.info("Adding 'Year' column to DataFrame.")
+                df['Year'] = selected_year
+            
+            df = df[df['Year'] == selected_year]
             tables = [df.to_html(classes='data', index=False)]
         else:
             tables = []
@@ -330,6 +348,7 @@ def draft_data():
     render_template_and_save('draft_data.html', 'draft_data.html', tables=tables, years=years)
     
     return render_template('draft_data.html', tables=tables, years=years)
+
 
 def get_all_owners(league_id, swid, espn_s2, years):
     all_teams_df = get_all_teams_data(league_id, swid, espn_s2, years)
