@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Flask, render_template, request, render_template_string
+from flask import Flask, render_template, request
 from espn_api.football import League
 import os
 import re
@@ -7,9 +7,9 @@ import pickle
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = '/Users/shraydewan/Downloads/draftdata'
-CACHE_FOLDER = 'cache'
-OUTPUT_FOLDER = 'output'
+UPLOAD_FOLDER = os.path.join('/tmp', 'uploads')
+CACHE_FOLDER = os.path.join('/tmp', 'cache')
+OUTPUT_FOLDER = os.path.join('/tmp', 'output')
 ALLOWED_EXTENSIONS = {'csv'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -102,7 +102,7 @@ def get_teams_data(league_id, swid, espn_s2, year):
     team_data = []
     for team in league.teams:
         owners = team.owners
-        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
+        owner_names = ', '.join([f"{owner.firstName} {owner.lastName}" for owner in owners]) if owners else "N/A"
         team_data.append({
             'year': year,
             'owners': owner_names,
