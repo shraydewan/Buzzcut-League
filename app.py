@@ -212,7 +212,7 @@ def teams():
 
     return render_template('teams.html', tables=[teams_df.to_html(classes='data', index=False)], titles=teams_df.columns.values, base_url=BASE_URL)
 
-@app.route('/templates/records')
+@app.route('/records')
 def records():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
