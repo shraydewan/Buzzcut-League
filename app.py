@@ -166,7 +166,7 @@ def get_head_to_head_records(league_id, swid, espn_s2, years):
     
     return replace_names(grouped_records_df)
 
-@app.route('/')
+@app.route('/templates')
 def home():
     years = range(2019, 2024)
     league_id = 169486
