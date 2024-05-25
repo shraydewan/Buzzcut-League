@@ -175,7 +175,7 @@ def home():
     owners = get_all_owners(league_id, swid, espn_s2, years)
     return render_template('index.html', years=years, owners=owners, base_url=BASE_URL)
 
-@app.route('/box_scores', methods=['GET', 'POST'])
+@app.route('/templates/box_scores', methods=['GET', 'POST'])
 def box_scores():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
@@ -196,7 +196,7 @@ def box_scores():
 
     return render_template('box_scores.html', tables=[all_years_df.to_html(classes='data', index=False)], titles=all_years_df.columns.values, years=years, base_url=BASE_URL)
 
-@app.route('/teams', methods=['GET', 'POST'])
+@app.route('/templates/teams', methods=['GET', 'POST'])
 def teams():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
@@ -212,7 +212,7 @@ def teams():
 
     return render_template('teams.html', tables=[teams_df.to_html(classes='data', index=False)], titles=teams_df.columns.values, base_url=BASE_URL)
 
-@app.route('/records')
+@app.route('/templates/records')
 def records():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
@@ -229,7 +229,6 @@ def records():
         box_scores = get_box_scores(league_id, swid, espn_s2, year, weeks)
         all_box_scores = pd.concat([all_box_scores, box_scores], ignore_index=True)
 
-    # Filter to include only weeks 1-12
     filtered_box_scores = all_box_scores[all_box_scores['week'].isin(weeks)]
     
     highest_week_score = filtered_box_scores.loc[filtered_box_scores[['home_score', 'away_score']].idxmax().max()][['home_score', 'home_owners', 'year', 'week']]
@@ -266,28 +265,9 @@ def records():
         'lowest_week_score': lowest_week_score
     }
 
-    return render_template('records.html', records=records, base_url=BASE_URL)
+    return render_template('records.html', records=records)
 
-@app.route('/head_to_head', methods=['GET', 'POST'])
-def head_to_head():
-    league_id = 169486
-    swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
-    years = range(2019, 2024)
-
-    if request.method == 'POST':
-        selected_owner = request.form['owner']
-        head_to_head_df = get_head_to_head_records(league_id, swid, espn_s2, years)
-        head_to_head_df = head_to_head_df[head_to_head_df['Owner'] == selected_owner]
-        head_to_head_df = replace_names(head_to_head_df)
-    else:
-        head_to_head_df = pd.DataFrame()
-
-    owners = get_all_owners(league_id, swid, espn_s2, years)
-
-    return render_template('head_to_head.html', tables=[head_to_head_df.to_html(classes='data', index=False)], titles=head_to_head_df.columns.values, owners=owners, base_url=BASE_URL)
-
-@app.route('/draft_data', methods=['GET', 'POST'])
+@app.route('/templates/draft_data', methods=['GET', 'POST'])
 def draft_data():
     years = range(2019, 2024)
     df = read_csv_files()
