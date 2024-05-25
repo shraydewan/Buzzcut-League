@@ -334,9 +334,13 @@ def draft_data():
             app.logger.info("DataFrame columns: %s", df.columns)
             selected_year = int(selected_year)
             
+            # Ensure 'Year' column exists and is correctly filled
             if 'Year' not in df.columns:
                 app.logger.info("Adding 'Year' column to DataFrame.")
                 df['Year'] = selected_year
+            
+            # If 'Year' column exists but not all rows have it filled, fill missing values
+            df['Year'].fillna(selected_year, inplace=True)
             
             df = df[df['Year'] == selected_year]
             tables = [df.to_html(classes='data', index=False)]
@@ -348,6 +352,7 @@ def draft_data():
     render_template_and_save('draft_data.html', 'draft_data.html', tables=tables, years=years)
     
     return render_template('draft_data.html', tables=tables, years=years)
+
 
 
 def get_all_owners(league_id, swid, espn_s2, years):
