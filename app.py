@@ -78,26 +78,32 @@ def get_box_scores(league_id, swid, espn_s2, year, weeks):
     
     try:
         league = League(league_id=league_id, year=year, swid=swid, espn_s2=espn_s2)
+        app.logger.info(f"Fetched league data for {year}")
     except Exception as e:
-        app.logger.error("Failed to access league data: %s", e)
+        app.logger.error(f"Failed to access league data for {year}: {e}")
         return pd.DataFrame()  # Return an empty DataFrame on error
 
     data = []
     for week in weeks:
-        box_scores = league.box_scores(week=week)
-        for box_score in box_scores:
-            home_team = box_score.home_team
-            away_team = box_score.away_team
-            home_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in home_team.owners]) if home_team.owners else "N/A"
-            away_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in away_team.owners]) if away_team.owners else "N/A"
-            data.append({
-                'year': year,
-                'week': week,
-                'home_owners': home_owners,
-                'home_score': box_score.home_score,
-                'away_owners': away_owners,
-                'away_score': box_score.away_score
-            })
+        try:
+            box_scores = league.box_scores(week=week)
+            for box_score in box_scores:
+                home_team = box_score.home_team
+                away_team = box_score.away_team
+                home_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in home_team.owners]) if home_team.owners else "N/A"
+                away_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in away_team.owners]) if away_team.owners else "N/A"
+                data.append({
+                    'year': year,
+                    'week': week,
+                    'home_owners': home_owners,
+                    'home_score': box_score.home_score,
+                    'away_owners': away_owners,
+                    'away_score': box_score.away_score
+                })
+            app.logger.info(f"Fetched box scores for week {week} in {year}")
+        except Exception as e:
+            app.logger.error(f"Failed to fetch box scores for week {week} in {year}: {e}")
+    
     df = pd.DataFrame(data)
     cache_data(df, cache_file)
     return replace_names(df)
@@ -109,8 +115,9 @@ def get_teams_data(league_id, swid, espn_s2, year):
     
     try:
         league = League(league_id=league_id, year=year, swid=swid, espn_s2=espn_s2)
+        app.logger.info(f"Fetched team data for {year}")
     except Exception as e:
-        app.logger.error("Failed to access league data: %s", e)
+        app.logger.error(f"Failed to access team data for {year}: {e}")
         return pd.DataFrame()  # Return an empty DataFrame on error
 
     team_data = []
@@ -352,8 +359,6 @@ def draft_data():
     render_template_and_save('draft_data.html', 'draft_data.html', tables=tables, years=years)
     
     return render_template('draft_data.html', tables=tables, years=years)
-
-
 
 def get_all_owners(league_id, swid, espn_s2, years):
     all_teams_df = get_all_teams_data(league_id, swid, espn_s2, years)
