@@ -4,8 +4,12 @@ from espn_api.football import League
 import os
 import re
 import pickle
+import logging
 
 app = Flask(__name__)
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
 
 UPLOAD_FOLDER = os.path.join('/tmp', 'uploads')
 CACHE_FOLDER = os.path.join('/tmp', 'cache')
@@ -102,7 +106,7 @@ def get_teams_data(league_id, swid, espn_s2, year):
     team_data = []
     for team in league.teams:
         owners = team.owners
-        owner_names = ', '.join([f"{owner.firstName} {owner.lastName}" for owner in owners]) if owners else "N/A"
+        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
         team_data.append({
             'year': year,
             'owners': owner_names,
@@ -176,15 +180,19 @@ def render_template_and_save(filename, template, **context):
 
 @app.route('/')
 def home():
-    years = range(2019, 2024)
-    league_id = 169486
-    swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
-    owners = get_all_owners(league_id, swid, espn_s2, years)
-    
-    render_template_and_save('index.html', 'index.html', years=years, owners=owners)
-    
-    return render_template('index.html', years=years, owners=owners)
+    try:
+        years = range(2019, 2024)
+        league_id = 169486
+        swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
+        espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
+        owners = get_all_owners(league_id, swid, espn_s2, years)
+        
+        render_template_and_save('index.html', 'index.html', years=years, owners=owners)
+        
+        return render_template('index.html', years=years, owners=owners)
+    except Exception as e:
+        app.logger.error("Exception in / route: %s", e)
+        return "An error occurred", 500
 
 @app.route('/box_scores', methods=['GET', 'POST'])
 def box_scores():
@@ -213,7 +221,7 @@ def box_scores():
 def teams():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
+    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
 
     if request.method == 'POST':
         year = int(request.form['year'])
@@ -231,7 +239,7 @@ def teams():
 def records():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
-    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
+    espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
     years = range(2019, 2024)
 
     all_teams_df = get_all_teams_data(league_id, swid, espn_s2, years)
