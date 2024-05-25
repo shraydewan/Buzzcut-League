@@ -198,7 +198,7 @@ def render_template_and_save(filename, template, **context):
 @app.route('/')
 def home():
     try:
-        years = range(2019, 2024)
+        years = range(2020, 2024)
         league_id = 169486
         swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
         espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
@@ -222,7 +222,7 @@ def box_scores():
         year = int(request.form['year'])
         years = [year]
     else:
-        years = range(2019, 2024)
+        years = range(2020, 2024)
 
     all_years_df = pd.DataFrame()
     for year in years:
@@ -257,7 +257,7 @@ def records():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
     espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
-    years = range(2019, 2024)
+    years = range(2020, 2024)
 
     all_teams_df = get_all_teams_data(league_id, swid, espn_s2, years)
     all_teams_df = replace_names(all_teams_df)
@@ -313,7 +313,7 @@ def head_to_head():
     league_id = 169486
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
     espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
-    years = range(2019, 2024)
+    years = range(2020, 2024)
 
     if request.method == 'POST':
         selected_owner = request.form['owner']
@@ -331,7 +331,7 @@ def head_to_head():
 
 @app.route('/draft_data', methods=['GET', 'POST'])
 def draft_data():
-    years = range(2019, 2024)
+    years = range(2020, 2024)
     df = read_csv_files()
     
     if request.method == 'POST':
