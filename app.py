@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from espn_api.football import League
 import os
 import re
@@ -10,6 +10,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = '/Users/shraydewan/Downloads/draftdata'
 CACHE_FOLDER = 'cache'
 ALLOWED_EXTENSIONS = {'csv'}
+BASE_URL = 'https://shraydewan.github.io/Buzzcut-League'  # Set your base URL here
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['CACHE_FOLDER'] = CACHE_FOLDER
@@ -74,7 +75,7 @@ def get_box_scores(league_id, swid, espn_s2, year, weeks):
         for box_score in box_scores:
             home_team = box_score.home_team
             away_team = box_score.away_team
-            home_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in home_team.owners]) if home_team.owners else "N/A"
+            home_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}"] for owner in home_team.owners) if home_team.owners else "N/A"
             away_owners = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in away_team.owners]) if away_team.owners else "N/A"
             data.append({
                 'year': year,
@@ -97,7 +98,7 @@ def get_teams_data(league_id, swid, espn_s2, year):
     team_data = []
     for team in league.teams:
         owners = team.owners
-        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
+        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}"] for owner in owners) if owners else "N/A"
         team_data.append({
             'year': year,
             'owners': owner_names,
@@ -165,8 +166,6 @@ def get_head_to_head_records(league_id, swid, espn_s2, years):
     
     return replace_names(grouped_records_df)
 
-
-
 @app.route('/')
 def home():
     years = range(2019, 2024)
@@ -174,7 +173,7 @@ def home():
     swid = '{9D7CB084-B793-4CDB-B037-52F4D98ACC1C}'
     espn_s2 = 'AEBnf8ht3Oh0xvAhRtuyyIu5VpvAehSmKj1wrehc8SlmvaOFPje8AfZuMV79MrraWZ%2B5bJA%2FMxLZLakCKg8sm6jixwPSGpMjHqI28KwjOS4ottSwpPEGZiEHZQAMfs34uX0Le%2BCpz0Z4ztfzPYyqKzGoL5vo%2FgiCDr3TXn57v%2FQj0Wv2gTpv2GMoUMi5WA85b1IFPmD1eEAc5Ifq753KrQruc6TF4dugjFBMNfBO3N70wm3OkozT9ycrA2lhHYafaIap8uR%2Bri%2B7fb2qk56Hz%2F6r'
     owners = get_all_owners(league_id, swid, espn_s2, years)
-    return render_template('index.html', years=years, owners=owners)
+    return render_template('index.html', years=years, owners=owners, base_url=BASE_URL)
 
 @app.route('/box_scores', methods=['GET', 'POST'])
 def box_scores():
@@ -195,7 +194,7 @@ def box_scores():
         year_df = replace_names(year_df)
         all_years_df = pd.concat([all_years_df, year_df], ignore_index=True)
 
-    return render_template('box_scores.html', tables=[all_years_df.to_html(classes='data', index=False)], titles=all_years_df.columns.values, years=years)
+    return render_template('box_scores.html', tables=[all_years_df.to_html(classes='data', index=False)], titles=all_years_df.columns.values, years=years, base_url=BASE_URL)
 
 @app.route('/teams', methods=['GET', 'POST'])
 def teams():
@@ -211,7 +210,7 @@ def teams():
     teams_df = get_teams_data(league_id, swid, espn_s2, year)
     teams_df = replace_names(teams_df)
 
-    return render_template('teams.html', tables=[teams_df.to_html(classes='data', index=False)], titles=teams_df.columns.values)
+    return render_template('teams.html', tables=[teams_df.to_html(classes='data', index=False)], titles=teams_df.columns.values, base_url=BASE_URL)
 
 @app.route('/records')
 def records():
@@ -267,7 +266,7 @@ def records():
         'lowest_week_score': lowest_week_score
     }
 
-    return render_template('records.html', records=records)
+    return render_template('records.html', records=records, base_url=BASE_URL)
 
 @app.route('/head_to_head', methods=['GET', 'POST'])
 def head_to_head():
@@ -286,7 +285,7 @@ def head_to_head():
 
     owners = get_all_owners(league_id, swid, espn_s2, years)
 
-    return render_template('head_to_head.html', tables=[head_to_head_df.to_html(classes='data', index=False)], titles=head_to_head_df.columns.values, owners=owners)
+    return render_template('head_to_head.html', tables=[head_to_head_df.to_html(classes='data', index=False)], titles=head_to_head_df.columns.values, owners=owners, base_url=BASE_URL)
 
 @app.route('/draft_data', methods=['GET', 'POST'])
 def draft_data():
@@ -303,7 +302,7 @@ def draft_data():
     else:
         tables = []
     
-    return render_template('draft_data.html', tables=tables, years=years)
+    return render_template('draft_data.html', tables=tables, years=years, base_url=BASE_URL)
 
 def get_all_owners(league_id, swid, espn_s2, years):
     all_teams_df = get_all_teams_data(league_id, swid, espn_s2, years)
