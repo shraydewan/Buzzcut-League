@@ -150,7 +150,7 @@ def get_all_teams_data(league_id, swid, espn_s2, years):
 
 def get_head_to_head_records(league_id, swid, espn_s2, years):
     all_box_scores = pd.DataFrame()
-    weeks = range(1, 19)
+    weeks = range(1, 18)
     for year in years:
         box_scores = get_box_scores(league_id, swid, espn_s2, year, weeks)
         all_box_scores = pd.concat([all_box_scores, box_scores], ignore_index=True)
