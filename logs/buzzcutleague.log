@@ -1,3 +1,10 @@
-2024-05-30 20:02:32,141 INFO: DataFrame columns: Index(['Year', 'Pick #', 'Round Pick #', 'Owner', 'Previous Owner(s)', 'Pick',
+2024-05-30 20:06:54,943 INFO: Reading file /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/draftdata/Draft Data - 2017.csv [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:52]
+2024-05-30 20:06:54,945 INFO: Year extracted: 2017 [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:57]
+2024-05-30 20:06:54,945 INFO: DataFrame shape: (192, 7) [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:61]
+2024-05-30 20:06:54,947 INFO: Combined DataFrame columns: Index(['Pick #', 'Round Pick #', 'Owner', 'Pick', 'Team', 'Pos.', 'Year',
+       'Previous Owner(s)'],
+      dtype='object') [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:70]
+2024-05-30 20:06:54,950 INFO: Selected year: 2021 [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:369]
+2024-05-30 20:06:54,950 INFO: DataFrame columns: Index(['Year', 'Pick #', 'Round Pick #', 'Owner', 'Previous Owner(s)', 'Pick',
        'Team', 'Pos.'],
-      dtype='object') [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:368]
+      dtype='object') [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:370]
