@@ -1,0 +1,179 @@
+Pick #,Round Pick #,Owner,Pick,Team,Pos.
+1,1.01,Liam,Saquon Barkley,NYG,RB
+2,1.02,"Joel/Aryan (via Sai/Jack,via Manav/Brian)",Christian McCaffery,CAR,RB
+3,1.03,Sai/Jack (via Joel/Aryan),Alvin Kamara,NO,RB
+4,1.04,Adrian,Deandre Hopkins,HOU,WR
+5,1.05,Rushil/Krishna,Davante Adams,GB,WR
+6,1.06,Deven/Insung,David Johnson,ARI,RB
+7,1.07,Mateen/Rohit (via Shashaank),Le'Veon Bell,NYJ,RB
+8,1.08,Shray,Nick Chubb,CLE,RB
+9,1.09,"Kruthik/Rawad (via Sai/Jack,via Shashaank,via Mateen/Rohit)",Julio Jones,ATL,WR
+10,1.10,Ani,Travis Kelce,KC,TE
+11,1.11,Sai/Jack (via Kruthik/Rawad),Ezekiel Elliott,DAL,RB
+12,1.12,Shashaank (via Sai/Jack),Joe Mixon,CIN,RB
+13,2.01,"Shashaank (via Sai/Jack,via Shray,via Manav/Brian,via Sai/Jack)",Tyreek Hill,KC,WR
+14,2.02,"Manav/Brian (via Shray,via Kruthik/Rawad)",Todd Gurley,LAR,RB
+15,2.03,"Mateen/Rohit (via Liam,via Ani)",Michael Thomas,NO,WR
+16,2.04,Rushil/Krishna (via Mateen/Rohit),James Connor,PIT,RB
+17,2.05,Kruthik/Rawad (via Shray),Odell Beckham Jr,CLE,WR
+18,2.06,"Shray (via Sai/Jack,via Shashaank)",JuJu Smith-Schuster,PIT,WR
+19,2.07,Deven/Insung,Dalvin Cook,MIN,RB
+20,2.08,Rushil/Krishna,Mike Evans,TB,WR
+21,2.09,Adrian,Damien Williams,KC,RB
+22,2.10,Joel/Aryan,Amari Cooper,DAL,WR
+23,2.11,Manav/Brian,Antonio Brown,OAK,WR
+24,2.12,Ani (via Liam),Devonta Freeman,ATL,RB
+25,3.01,Ani (via Liam),Leonard Fournette,JAX,RB
+26,3.02,Manav/Brian,Adam Theilen,MIN,WR
+27,3.03,Joel/Aryan,George Kittle,SF,TE
+28,3.04,Adrian,Aaron Jones,GB,RB
+29,3.05,Mateen/Rohit (via Rushil/Krishna),Keenan Allen,LAC,WR
+30,3.06,Deven/Insung,Josh Jacobs,OAK,RB
+31,3.07,Liam (via Shashaank),Chris Carson,SEA,RB
+32,3.08,Shray,Kerryon Johnson,DET,RB
+33,3.09,"Sai/Jack (via Shashaank,via Liam,via Mateen/Rohit)",Zach Ertz,PHI,TE
+34,3.10,Liam (via Ani),David Montgomery,CHI,RB
+35,3.11,Kruthik/Rawad,Derrick Henry,TEN,RB
+36,3.12,Manav/Brian (via Sai/Jack),Sony Michel,NE,RB
+37,4.01,Shashaank (via Sai/Jack),Julian Edelman,NE,WR
+38,4.02,Kruthik/Rawad,Mark Ingram,BAL,RB
+39,4.03,Ani,Stefon Diggs,MIN,WR
+40,4.04,Liam (via Mateen/Rohit),Robert Woods,LAR,WR
+41,4.05,Shray,Brandin Cooks,LAR,WR
+42,4.06,Liam (via Shashaank),Cooper Kupp,LAR,WR
+43,4.07,Deven/Insung,TY. Hilton,IND,WR
+44,4.08,Mateen/Rohit (via Rushil/Krishna),Phillip Lindsay,DEN,RB
+45,4.09,Adrian,Tyler Lockett,SEA,WR
+46,4.10,Joel/Aryan,Marlon Mack,IND,RB
+47,4.11,Manav/Brian,Patrick Mahomes,KC,QB
+48,4.12,Shashaank (via Liam),Chris Godwin,TB,WR
+49,5.01,Ani (via Liam),Kenny Golladay,DET,WR
+50,5.02,Sai/Jack (via Manav/Brian),Calvin Ridley,ATL,WR
+51,5.03,Liam (via Joel/Aryan),O. J. Howard,TB,TE
+52,5.04,Adrian,Austin Ekeler,LAC,RB
+53,5.05,Rushil/Krishna,Tevin Coleman,SF,RB
+54,5.06,Deven/Insung,Tyler Boyd,CIN,WR
+55,5.07,"Shashaank (via Sai/Jack,via Shashaank)",Darrius Guice,WAS,RB
+56,5.08,Shray,Miles Sanders,PHI,RB
+57,5.09,Mateen/Rohit,DJ. Moore,CAR,WR
+58,5.10,"Joel/Aryan (via Liam,via Ani)",Alshon Jeffrey,PHI,WR
+59,5.11,Sai/Jack (via Kruthik/Rawad),Josh Gordon,NE,WR
+60,5.12,Sai/Jack,Melvin Gordon,LAC,RB
+61,5.13,"Kruthik/Rawad (via Sai/Jack,via Shashaank)",Evan Engram,NYG,TE
+62,6.01,Sai/Jack,Mike Williams,LAC,WR
+63,6.02,Kruthik/Rawad,Tarik Cohen,CHI,RB
+64,6.03,Ani,Matt Ryan,ATL,QB
+65,6.04,Mateen/Rohit,Duke Johnson Jr.,HOU,RB
+66,6.05,Shray,Robby Anderson,NYJ,WR
+67,6.06,Sai/Jack (via Shashaank),Kenyan Drake,MIA,RB
+68,6.07,Deven/Insung,Hunter Henry,LAC,TE
+69,6.08,Manav/Brian (via Rushil/Krishna),Jared Cook,OAK,TE
+70,6.09,Adrian,Deshaun Watson,HOU,QB
+71,6.10,Joel/Aryan,James White,NE,RB
+72,6.11,Manav/Brian,Jarvis Landry,CLE,WR
+73,6.12,Sai/Jack (via Liam),Latavius Murray,NO,RB
+74,6.13,Kruthik/Rawad (via Shray),Aaron Rodgers,GB,QB
+75,7.01,Shashaank (via Liam),Rashaad Penny,SEA,RB
+76,7.02,"Shray (via Sai/Jack,via Manav/Brian)",Dede Westbrook,JAX,WR
+77,7.03,Sai/Jack (via Joel/Aryan),Allen Robinson,CHI,WR
+78,7.04,Adrian,Vance McDonald,PIT,TE
+79,7.05,Mateen/Rohit (via Rushil/Krishna),AJ Green,CIN,WR
+80,7.06,Deven/Insung,Curtis Samuel,CAR,WR
+81,7.07,"Shashaank (via Sai/Jack,via Shashaank)",Baker Mayfield,CLE,QB
+82,7.08,Shray,Matt Breida,SF,RB
+83,7.09,"Joel/Aryan (via Liam,via Shashaank,via Mateen/Rohit)",Peyton Barber,TB,RB
+84,7.10,Ani,Sterling Shepard,NYG,WR
+85,7.11,Sai/Jack (via Kruthik/Rawad),Christian Kirk,ARI,WR
+86,7.12,Liam (via Sai/Jack),Marvin Jones,DET,WR
+87,7.13,Rushil/Krishna (via Manav/Brian),Jordan Howard,PHI,RB
+88,8.01,Manav/Brian (via Sai/Jack),LeSean McCoy,BUF,RB
+89,8.02,Kruthik/Rawad,Will Fuller,HOU,WR
+90,8.03,Ani,Emanuel Sanders,DEN,WR
+91,8.04,Mateen/Rohit,Austin Hooper,ATL,TE
+92,8.05,Manav/Brian (via Shray),Golden Tate,NYG,WR
+93,8.06,"Joel/Aryan (via Sai/Jack,via Shashaank)",Cam Newton,CAR,QB
+94,8.07,Deven/Insung,Carson Wentz,PHI,QB
+95,8.08,Rushil/Krishna,David Njoku,CLE,TE
+96,8.09,Adrian,Royce Freeman,DEN,RB
+97,8.10,Joel/Aryan,Dante Pettis,SF,WR
+98,8.11,Manav/Brian,Delanie Walker,TEN,TE
+99,8.12,"Liam (via Mateen/Rohit,via Liam)",Tony Pollard,DAL,RB
+100,8.13,Adrian,Kalen Ballage,MIA,RB
+101,9.01,Mateen/Rohit (via Liam),Drew Brees,NO,QB
+102,9.02,Manav/Brian,CHI D/ST,CHI,D/ST
+103,9.03,"Mateen/Rohit (via Liam,via Joel/Aryan)",Adrian Peterson,WAS,RB
+104,9.04,Adrian,Sammy Watkins,KC,WR
+105,9.05,Rushil/Krishna,Jarred Goff,LAR,QB
+106,9.06,Deven/Insung,Kareem Hunt,CLE,RB
+107,9.07,Sai/Jack (via Shashaank),Russel Wilson,SEA,QB
+108,9.08,Shray,Darwin Thompson,KC,RB
+109,9.09,Liam (via Mateen/Rohit),Desean Jackson,PHI,WR
+110,9.10,Ani,Darrell Henderson,LAR,RB
+111,9.11,Kruthik/Rawad,Marquez Valdes-Scantling,GB,WR
+112,9.12,Liam (via Sai/Jack),Lamar Jackson,BAL,QB
+113,9.13,Shashaank (via Sai/Jack),Michael Gallup,DAL,WR
+114,10.01,Shashaank (via Sai/Jack),Nyheim Hines,IND,RB
+115,10.02,Kruthik/Rawad,Eric Ebron,IND,TE
+116,10.03,Ani,Ito Smith,ATL,RB
+117,10.04,Mateen/Rohit,Corey Davis,BAL,WR
+118,10.05,Shray,Justin Jackson,LAC,RB
+119,10.06,Liam (via Shashaank),Larry Firzgerald,ARI,WR
+120,10.07,Deven/Insung,Courtland Sutton,DEN,WR
+121,10.08,Rushil/Krishna,Anthony Miller,CHI,WR
+122,10.09,Adrian,Geronimo Allison,GB,WR
+123,10.10,Joel/Aryan,James Washington,PIT,WR
+124,10.11,Manav/Brian,Ben Roethlisberger,PIT,QB
+125,10.12,"Shashaank (via Sai/Jack,via Shashaank,via Liam)",Jack Doyle,IND,TE
+126,10.13,Rushil/Krishna (via Manav/Brian),Eagles D/ST,PHI,D/ST
+127,11.01,Shray (via Liam),Mark Andrews,BAL,TE
+128,11.02,Manav/Brian,CJ Anderson,DET,RB
+129,11.03,Joel/Aryan,DK Metcalf,SEA,WR
+130,11.04,Adrian,Alexander Mattison,MIN,RB
+131,11.05,Deven/Insung (via Rushil/Krishna),Kyler Murray,ARI,QB
+132,11.06,Manav/Brian (via Deven/Insung),John Brown,BUF,WR
+133,11.07,Shashaank,Tom Brady,NE,QB
+134,11.08,"Shashaank (via Liam,via Shray)",Devin Singletary,BUF,RB
+135,11.09,Mateen/Rohit,Dak Prescott,DAL,QB
+136,11.10,Ani,Rams D/ST,LAR,D/ST
+137,11.11,Kruthik/Rawad,Jaguars D/ST,JAX,D/ST
+138,11.12,Sai/Jack,TJ Hockenson,DET,TE
+139,11.13,Mateen/Rohit,Ravens D/ST,BAL,D/ST
+140,12.01,Sai/Jack,Cleveland D/ST,CLE,D/ST
+141,12.02,Kruthik/Rawad,Mohamed Sanu,ATL,WR
+142,12.03,Ani,Dion Lewis,TEN,RB
+143,12.04,Mateen/Rohit,Donte Moncrief,PIT,WR
+144,12.05,Liam (via Shray),Harrison Butker,KC,K
+145,12.06,Sai/Jack (via Shashaank),Justin Tucker,BAL,K
+146,12.07,Rushil/Krishna (via Deven/Insung),Gus Edwards,BAL,RB
+147,12.08,Rushil/Krishna,Keke Coutee,HOU,WR
+148,12.09,Adrian,Minnesota D/ST,MIN,D/ST
+149,12.10,Joel/Aryan,Will Lutz,NO,K
+150,12.11,Deven/Insung (via Manav/Brian),Justice Hill,BAL,RB
+151,12.12,Liam,SF D/ST,SF,D/ST
+152,12.13,Joel/Aryan,Andy Isabella,AZ,WR
+153,13.01,Shray (via Liam),Josh Allen,BUF,QB
+154,13.02,Manav/Brian,Stephen Gostkowski,NE,K
+155,13.03,Joel/Aryan,NYJ D/ST,NYJ,D/ST
+156,13.04,Adrian,Greg Zuerlein,LAR,K
+157,13.05,Rushil/Krishna,Kaimi Fairbairn,HOU,K
+158,13.06,Sai/Jack (via Deven/Insung),Nick Foles,JAX,QB
+159,13.07,Shashaank,Robbie Gould,SF,K
+160,13.08,Shray,Damien Harris,KC,RB
+161,13.09,Mateen/Rohit,Jake Elliot,PHI,K
+162,13.10,Ani,Matt Prater,DET,K
+163,13.11,Kruthik/Rawad,Brett Maher,DAL,K
+164,13.12,Deven/Insung (via Sai/Jack),Mecole Hardman,KC,WR
+165,13.13,Ani,Phillip Rivers,LAC,QB
+166,14.01,Deven/Insung (via Sai/Jack),DEN D/ST,DEN,D/ST
+167,14.02,Kruthik/Rawad,Jimmy Garappolo,SF,QB
+168,14.03,Ani,Maxx Williams,ARI,TE
+169,14.04,Mateen/Rohit,Greg Olsen,CAR,TE
+170,14.05,"Deven/Insung (via Manav/Brian,via Shray)",Mike Badgley,LAC,K
+171,14.06,Liam (via Shashaank),Jay Ajayi,FA,RB
+172,14.07,Rushil/Krishna (via Deven/Insung),Kirk Cousins,WAS,QB
+173,14.08,Rushil/Krishna,LAC D/ST,LAC,D/ST
+174,14.09,Adrian,SEA D/ST,SEA,D/ST
+175,14.10,Joel/Aryan,Noah Fant,DEN,TE
+176,14.11,Shray (via Manav/Brian),Ronald Jones,BUCS,RB
+177,14.12,"Shashaank (via Rushil/Krishna,via Liam)",DAL D/ST,DAL,D/ST
+178,14.13,Deven/Insung,Darren Waller,OAK,TE

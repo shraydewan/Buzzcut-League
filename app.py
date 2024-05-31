@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 
-UPLOAD_FOLDER = os.path.join('/tmp', 'uploads')
+UPLOAD_FOLDER = '/Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League'
 CACHE_FOLDER = os.path.join('/tmp', 'cache')
 OUTPUT_FOLDER = os.path.join('/tmp', 'output')
 ALLOWED_EXTENSIONS = {'csv'}
@@ -20,32 +20,43 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['CACHE_FOLDER'] = CACHE_FOLDER
 app.config['OUTPUT_FOLDER'] = OUTPUT_FOLDER
 
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-if not os.path.exists(CACHE_FOLDER):
-    os.makedirs(CACHE_FOLDER)
-
-if not os.path.exists(OUTPUT_FOLDER):
-    os.makedirs(OUTPUT_FOLDER)
+os.makedirs(CACHE_FOLDER, exist_ok=True)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def read_csv_files():
     dataframes = []
-    for filename in os.listdir(app.config['UPLOAD_FOLDER']):
-        if filename.endswith(".csv"):
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            df = pd.read_csv(file_path)
-            year_match = re.search(r'\d{4}', filename)
-            year = int(year_match.group()) if year_match else None
-            if 'Year' in df.columns:
-                df.rename(columns={'Year': 'Original Year'}, inplace=True)
-            df['Year'] = year  # Add the year as a column
-            dataframes.append(df)
+    draftdata_folder = os.path.join(app.config['UPLOAD_FOLDER'], 'draftdata')
+    app.logger.info(f"Reading CSV files from {draftdata_folder}")
+    try:
+        files = os.listdir(draftdata_folder)
+        app.logger.info(f"Files in directory: {files}")
+        if not files:
+            app.logger.warning("No files found in the directory.")
+        for filename in files:
+            if filename.endswith(".csv"):
+                file_path = os.path.join(draftdata_folder, filename)
+                app.logger.info(f"Reading file {file_path}")
+                try:
+                    df = pd.read_csv(file_path)
+                    year_match = re.search(r'\d{4}', filename)
+                    year = int(year_match.group()) if year_match else None
+                    app.logger.info(f"Year extracted: {year}")
+                    if 'Year' in df.columns:
+                        df.rename(columns={'Year': 'Original Year'}, inplace=True)
+                    df['Year'] = year  # Add the year as a column
+                    app.logger.info(f"DataFrame shape: {df.shape}")
+                    dataframes.append(df)
+                except Exception as e:
+                    app.logger.error(f"Failed to read file {file_path}: {e}")
+    except Exception as e:
+        app.logger.error(f"Error accessing the directory: {e}")
+
     if dataframes:
         combined_df = pd.concat(dataframes, ignore_index=True)
+        app.logger.info(f"Combined DataFrame columns: {combined_df.columns}")
         # Ensure the 'Year' column is consistently the first column
         cols = combined_df.columns.tolist()
         cols.insert(0, cols.pop(cols.index('Year')))
@@ -53,14 +64,20 @@ def read_csv_files():
         combined_df = combined_df[['Year', 'Pick #', 'Round Pick #', 'Owner', 'Previous Owner(s)', 'Pick', 'Team', 'Pos.']]  # Rearrange columns
     else:
         combined_df = pd.DataFrame()
+        app.logger.warning("No dataframes to combine, returning empty dataframe.")
     return combined_df
 
+
+
+
 def replace_names(df):
-    df.replace("Mani Suresh", "Rohan Shiknis", inplace=True)
-    df.replace("Insung Kim", "Deven Chatterjea", inplace=True)
-    df.replace("sainath raj", "Sainath Rajendrakumar", inplace=True)
-    if 'Owner' in df.columns and 'Year' in df.columns:
-        df.loc[(df['Year'] != 2019) & (df['Owner'] == "Rushil Knagaram"), 'Owner'] = "Liam Das"
+    replacements = {
+        "Mani Suresh": "Rohan Shiknis",
+        "Insung Kim": "Deven Chatterjea",
+        "sainath raj": "Sainath Rajendrakumar",
+        "Rushil Knagaram": "Liam Das"
+    }
+    df.replace(replacements, inplace=True)
     return df
 
 def cache_data(data, filename):
@@ -123,7 +140,7 @@ def get_teams_data(league_id, swid, espn_s2, year):
     team_data = []
     for team in league.teams:
         owners = team.owners
-        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
+        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}"] for owner in owners) if owners else "N/A"
         team_data.append({
             'year': year,
             'owners': owner_names,
@@ -186,7 +203,7 @@ def get_head_to_head_records(league_id, swid, espn_s2, years):
     records_df.index = pd.MultiIndex.from_tuples(records_df.index, names=['Owner', 'Opponent'])
     records_df.reset_index(inplace=True)
     
-    grouped_records_df = records_df.groupby(['Owner', 'Opponent']). sum().reset_index()
+    grouped_records_df = records_df.groupby(['Owner', 'Opponent']).sum().reset_index()
     
     return replace_names(grouped_records_df)
 
@@ -341,13 +358,11 @@ def draft_data():
             app.logger.info("DataFrame columns: %s", df.columns)
             selected_year = int(selected_year)
             
-            # Ensure 'Year' column exists and is correctly filled
             if 'Year' not in df.columns:
                 app.logger.info("Adding 'Year' column to DataFrame.")
                 df['Year'] = selected_year
             
-            # If 'Year' column exists but not all rows have it filled, fill missing values
-            df['Year'].fillna(selected_year, inplace=True)
+            df['Year'] = df['Year'].fillna(selected_year)
             
             df = df[df['Year'] == selected_year]
             tables = [df.to_html(classes='data', index=False)]

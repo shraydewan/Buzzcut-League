@@ -1,0 +1,179 @@
+Pick #,Round Pick #,Owner,Previous Owner(s),Pick,Team,Pos.
+1,1.01,Vib/Pranav,,Justin Jefferson,MIN,WR
+2,1.02,Shashaank/Rawad,Ani/Adrian,Ja'Marr Chase,CIN,WR
+3,1.03,Joel/Aryan,Mateen,Christian McCaffrey,SF,RB
+4,1.04,Ani/Adrian,Shashaank/Rawad,Travis Kelce,KC,TE
+5,1.05,Shray,Manav/Brian,Bijan Robinson,ATL,RB
+6,1.06,Deven/Krishna,Shray; Manav/Brian,Austin Ekeler,LAC,RB
+7,1.07,Kruthik/Davis,,Cooper Kupp,LAR,WR
+8,1.08,Manav/Brian,Deven/Krishna,Tyreek Hill,MIA,WR
+9,1.09,Liam/Rushil,,Saquon Barkley,NYG,RB
+10,1.1,Liam/Rushil,Rohan/Mani,Nick Chubb,CLE,RB
+11,1.11,Joel/Aryan,,Stefon Diggs,BUF,WR
+12,1.12,Sai/Jack,,Derrick Henry,TEN,RB
+13,2.01,Sai/Jack,,A.J. Brown,PHI,WR
+14,2.02,Mateen,Joel/Aryan,Tony Pollard,DAL,RB
+15,2.03,Rohan/Mani,,Davante Adams,LV,WR
+16,2.04,Rohan/Mani,Liam/Rushil,CeeDee Lamb,DAL,WR
+17,2.05,Vib/Pranav,Deven/Krishna,Jonathan Taylor,IND,RB
+18,2.06,Kruthik/Davis,,Josh Jacobs,LV,RB
+19,2.07,Manav/Brian,Shray,Amon-Ra St. Brown,DET,WR
+20,2.08,Shray,Manav/Brian,Garrett Wilson,NYJ,WR
+21,2.09,Ani/Adrian,Shashaank/Rawad,Jaylen Waddle,MIA,WR
+22,2.1,Mateen,,Najee Harris,PIT,RB
+23,2.11,Shashaank/Rawad,Ani/Adrian,Travis Etienne Jr.,JAC,RB
+24,2.12,Manav/Brian,Vib/Pranav,Rhamondre Stevenson,NE,RB
+25,3.01,Deven/Krishna,Vib/Pranav; Deven/Krishna,Joe Mixon,CIN,RB
+26,3.02,Ani/Adrian,,Patrick Mahomes II,KC,QB
+27,3.03,Mateen,,Breece Hall,NYJ,RB
+28,3.04,Shashaank/Rawad,,Chris Olave,NO,WR
+29,3.05,Deven/Krishna,Manav/Brian,Jahmyr Gibbs,DET,RB
+30,3.06,Liam/Rushil,Shray,Tee Higgins,CIN,WR
+31,3.07,Kruthik/Davis,,Aaron Jones,GB,RB
+32,3.08,Vib/Pranav,Deven/Krishna,Calvin Ridley,JAC,WR
+33,3.09,Shray,Liam/Rushil,DeVonta Smith,PHI,WR
+34,3.1,Rohan/Mani,,Mark Andrews,BAL,TE
+35,3.11,Mateen,Joel/Aryan,Josh Allen,BUF,QB
+36,3.12,Sai/Jack,,DK Metcalf,SEA,WR
+37,4.01,Sai/Jack,,Dameon Pierce,HOU,RB
+38,4.02,Mateen,Joel/Aryan,Keenan Allen,LAC,WR
+39,4.03,Rohan/Mani,,Kenneth Walker III,SEA,RB
+40,4.04,Ani/Adrian,Liam/Rushil; Rohan/Mani,Amari Cooper,CLE,WR
+41,4.05,Deven/Krishna,,Miles Sanders,CAR,RB
+42,4.06,Kruthik/Davis,,Jalen Hurts,PHI,QB
+43,4.07,Manav/Brian,Shray,Alexander Mattison,MIN,RB
+44,4.08,Shray,Manav/Brian,Christian Watson,GB,WR
+45,4.09,Shashaank/Rawad,,Lamar Jackson,BAL,QB
+46,4.1,Joel/Aryan,Mateen,Joe Burrow,CIN,QB
+47,4.11,Ani/Adrian,,Alvin Kamara,NO,RB
+48,4.12,Vib/Pranav,,DJ Moore,CHI,WR
+49,5.01,Deven/Krishna,Vib/Pranav,Terry McLaurin,WAS,WR
+50,5.02,Rohan/Mani,Ani/Adrian,Deebo Samuel,SF,WR
+51,5.03,Shray,Mateen; Joel/Aryan,Rachaad White,TB,RB
+52,5.04,Shashaank/Rawad,,T.J. Hockenson,MIN,TE
+53,5.05,Manav/Brian,,James Conner,ARI,RB
+54,5.06,Joel/Aryan,Shray,DeAndre Hopkins,TEN,WR
+55,5.07,Mateen,Kruthik/Davis,Jerry Jeudy,DEN,WR
+56,5.08,Vib/Pranav,Deven/Krishna,Cam Akers,LAR,RB
+57,5.09,Liam/Rushil,,Mike Williams,LAC,WR
+58,5.1,Liam/Rushil,Rohan/Mani,Drake London,ATL,WR
+59,5.11,Kruthik/Davis,Joel/Aryan; Mateen,Tyler Lockett,SEA,WR
+60,5.12,Sai/Jack,,Justin Fields,CHI,QB
+61,5.13,Manav/Brian,,Marquise Brown,ARI,WR
+62,6.01,Sai/Jack,,Chris Godwin,TB,WR
+63,6.02,Kruthik/Davis,Joel/Aryan; Mateen,J.K. Dobbins,BAL,RB
+64,6.03,Joel/Aryan,Rohan/Mani,Javonte Williams,DEN,RB
+65,6.04,Liam/Rushil,,Justin Herbert,LAC,QB
+66,6.05,Deven/Krishna,,Trevor Lawrence,JAC,QB
+67,6.06,Mateen,Kruthik/Davis,Kyle Pitts,ATL,TE
+68,6.07,Shray,,Diontae Johnson,PIT,WR
+69,6.08,Manav/Brian,,Darren Waller,NYG,TE
+70,6.09,Shashaank/Rawad,,Mike Evans,TB,WR
+71,6.1,Rohan/Mani,Mateen; Joel/Aryan,James Cook,BUF,RB
+72,6.11,Ani/Adrian,,D'Andre Swift,PHI,RB
+73,6.12,Vib/Pranav,,Dallas Goedert,PHI,TE
+74,6.13,Liam/Rushil,Manav/Brian,Brandon Aiyuk,SF,WR
+75,7.01,Deven/Krishna,Vib/Pranav,George Kittle,SF,TE
+76,7.02,Rohan/Mani,Ani/Adrian,Isiah Pacheco,KC,RB
+77,7.03,Shashaank/Rawad,Mateen,David Montgomery,DET,RB
+78,7.04,Ani/Adrian,Shashaank/Rawad,Dalvin Cook,FA,RB
+79,7.05,Manav/Brian,Manav/Brian,Michael Pittman Jr.,IND,WR
+80,7.06,Shray,,Christian Kirk,JAC,WR
+81,7.07,Kruthik/Davis,,George Pickens,PIT,WR
+82,7.08,Deven/Krishna,,Jaxon Smith-Njigba,SEA,WR
+83,7.09,Manav/Brian,Liam/Rushil,Jahan Dotson,WAS,WR
+84,7.1,Rohan/Mani,,Tua Tagovailoa,MIA,QB
+85,7.11,Joel/Aryan,,Michael Thomas,NO,WR
+86,7.12,Sai/Jack,,Khalil Herbert,CHI,RB
+87,7.13,Mateen,Shashaank/Rawad,Gabe Davis,BUF,WR
+88,8.01,Sai/Jack,,AJ Dillon,GB,RB
+89,8.02,Joel/Aryan,,Brian Robinson Jr.,WAS,RB
+90,8.03,Ani/Adrian,Rohan/Mani,Brandin Cooks,DAL,WR
+91,8.04,Manav/Brian,Liam/Rushil,Antonio Gibson,WAS,RB
+92,8.05,Deven/Krishna,Deven/Krishna,Treylon Burks,TEN,WR
+93,8.06,Kruthik/Davis,,Jordan Addison,MIN,WR
+94,8.07,Shray,,Deshaun Watson,CLE,QB
+95,8.08,Manav/Brian,,Daniel Jones,NYG,QB
+96,8.09,Mateen,Shashaank/Rawad,Elijah Moore,CLE,WR
+97,8.1,Mateen,,Zay Flowers,BAL,WR
+98,8.11,Ani/Adrian,,Jamaal Williams,NO,RB
+99,8.12,Vib/Pranav,,Quentin Johnston,LAC,WR
+100,8.13,Joel/Aryan,Mateen,Evan Engram,JAC,TE
+101,9.01,Vib/Pranav,,Courtland Sutton,DEN,WR
+102,9.02,Ani/Adrian,,JuJu Smith-Schuster,NE,WR
+103,9.03,Kruthik/Davis,Mateen,Rashaad Penny,PHI,RB
+104,9.04,Shashaank/Rawad,,Zach Charbonnet,SEA,RB
+105,9.05,Joel/Aryan,Manav/Brian,Odell Beckham Jr.,BAL,WR
+106,9.06,Rohan/Mani,Joel/Aryan,Kadarius Toney,KC,WR
+107,9.07,Mateen,Kruthik/Davis,Samaje Perine,DEN,RB
+108,9.08,Deven/Krishna,,Darnell Mooney,CHI,WR
+109,9.09,Liam/Rushil,,Rashod Bateman,BAL,WR
+110,9.1,Rohan/Mani,,Dak Prescott,DAL,QB
+111,9.11,Manav/Brian,Joel/Aryan,Kendre Miller,NO,RB
+112,9.12,Sai/Jack,,Jeff Wilson Jr.,MIA,RB
+113,9.13,Ani/Adrian,,Damien Harris,BUF,RB
+114,10.01,Sai/Jack,,Raheem Mostert,MIA,RB
+115,10.02,Liam/Rushil,Joel/Aryan; Manav/Brian,De'Von Achane,MIA,RB
+116,10.03,Rohan/Mani,,San Francisco 49ers,SF,DST
+117,10.04,Shray,Liam/Rushil,David Njoku,CLE,TE
+118,10.05,Liam/Rushil,Deven/Krishna; Manav/Brian,Pat Freiermuth,PIT,TE
+119,10.06,Kruthik/Davis,,Chigoziem Okonkwo,TEN,TE
+120,10.07,Shray,,Skyy Moore,KC,WR
+121,10.08,Joel/Aryan,Manav/Brian,Tyler Allgeier,ATL,RB
+122,10.09,Shashaank/Rawad,,Elijah Mitchell,SF,RB
+123,10.1,Shashaank/Rawad,Mateen,Allen Lazard,NYJ,WR
+124,10.11,Ani/Adrian,,Adam Thielen,CAR,WR
+125,10.12,Vib/Pranav,,Rondale Moore,ARI,WR
+126,10.13,Rohan/Mani,,Jalin Hyatt,NYG,WR
+127,11.01,Vib/Pranav,,DJ Chark Jr.,CAR,WR
+128,11.02,Ani/Adrian,,D'Onta Foreman,CHI,RB
+129,11.03,Mateen,,Nico Collins,HOU,WR
+130,11.04,Shashaank/Rawad,,Anthony Richardson,IND,QB
+131,11.05,Deven/Krishna,Manav/Brian,Jerick McKinnon,KC,RB
+132,11.06,Shray,,Jaylen Warren,PIT,RB
+133,11.07,Kruthik/Davis,,Zay Jones,JAC,WR
+134,11.08,Deven/Krishna,,Jakobi Meyers,LV,WR
+135,11.09,Liam/Rushil,,Justyn Ross,KC,WR
+136,11.1,Rohan/Mani,,Tyler Boyd,CIN,WR
+137,11.11,Joel/Aryan,,Devin Singletary,HOU,RB
+138,11.12,Sai/Jack,,Michael Gallup,DAL,WR
+139,11.13,Shray,,Tank Bigsby,JAC,RB
+140,12.01,Sai/Jack,,Cole Kmet,CHI,TE
+141,12.02,Joel/Aryan,,Jayden Reed,GB,WR
+142,12.03,Rohan/Mani,,Cordarrelle Patterson,ATL,RB
+143,12.04,Liam/Rushil,,Rashee Rice,KC,WR
+144,12.05,Deven/Krishna,,Kenneth Gainwell,PHI,RB
+145,12.06,Kruthik/Davis,,Justin Tucker,BAL,K
+146,12.07,Shray,,Roschon Johnson,CHI,RB
+147,12.08,Manav/Brian,,Gus Edwards,BAL,RB
+148,12.09,Shashaank/Rawad,,Romeo Doubs,GB,WR
+149,12.1,Mateen,,Dallas Cowboys,DAL,DST
+150,12.11,Ani/Adrian,,K.J. Osborn,MIN,WR
+151,12.12,Vib/Pranav,,Zack Moss,IND,RB
+152,12.13,Shray,,Zamir White,LV,RB
+153,13.01,Vib/Pranav,,Kirk Cousins,MIN,QB
+154,13.02,Ani/Adrian,,Daniel Carlson,LV,K
+155,13.03,Shashaank/Rawad,Mateen,John Metchie III,HOU,WR
+156,13.04,Shashaank/Rawad,,Philadelphia Eagles,PHI,DST
+157,13.05,Manav/Brian,,Buffalo Bills,BUF,DST
+158,13.06,Shray,,Jameson Williams,DET,WR
+159,13.07,Kruthik/Davis,,New England Patriots,NE,DST
+160,13.08,Deven/Krishna,,Wan'Dale Robinson,NYG,WR
+161,13.09,Manav/Brian,Liam/Rushil,Harrison Butker,KC,K
+162,13.1,Rohan/Mani,,Evan McPherson,CIN,K
+163,13.11,Joel/Aryan,,New Orleans Saints,NO,DST
+164,13.12,Sai/Jack,,Miami Dolphins,MIA,DST
+165,13.13,Liam/Rushil,,Dalton Kincaid,BUF,TE
+166,14.01,Sai/Jack,,Younghoe Koo,ATL,K
+167,14.02,Joel/Aryan,,Matt Gay,IND,K
+168,14.03,Rohan/Mani,,Ezekiel Elliott,FA,RB
+169,14.04,Liam/Rushil,,Baltimore Ravens,BAL,DST
+170,14.05,Manav/Brian,Deven/Krishna,Jonathan Mingo,CAR,WR
+171,14.06,Kruthik/Davis,,Donovan Peoples-Jones,CLE,WR
+172,14.07,Shray,,Jerome Ford,CLE,RB
+173,14.08,Deven/Krishna,Manav/Brian,Washington Commanders,WAS,DST
+174,14.09,Shashaank/Rawad,,Jake Elliott,PHI,K
+175,14.1,Mateen,,Michael Carter,NYJ,RB
+176,14.11,Ani/Adrian,,Seattle Seahawks,SEA,DST
+177,14.12,Vib/Pranav,,Cincinnati Bengals,CIN,DST
+178,14.13,Vib/Pranav,,Chuba Hubbard,CAR,RB
