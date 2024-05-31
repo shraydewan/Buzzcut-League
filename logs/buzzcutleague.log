@@ -1,0 +1,3 @@
+2024-05-30 20:02:32,141 INFO: DataFrame columns: Index(['Year', 'Pick #', 'Round Pick #', 'Owner', 'Previous Owner(s)', 'Pick',
+       'Team', 'Pos.'],
+      dtype='object') [in /Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League/app.py:368]

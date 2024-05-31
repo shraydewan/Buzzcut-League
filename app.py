@@ -5,12 +5,23 @@ import os
 import re
 import pickle
 import logging
+from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
-# Setup logging
-logging.basicConfig(level=logging.INFO)
+# Setup logging to a file with rotation
+if not os.path.exists('logs'):
+    os.makedirs('logs')
 
+file_handler = RotatingFileHandler('logs/buzzcutleague.log', maxBytes=10240, backupCount=10)
+file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+file_handler.setLevel(logging.INFO)
+app.logger.addHandler(file_handler)
+
+app.logger.setLevel(logging.INFO)
+app.logger.info('Buzzcut League startup')
+
+# Setup paths
 UPLOAD_FOLDER = '/Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League'
 CACHE_FOLDER = os.path.join('/tmp', 'cache')
 OUTPUT_FOLDER = os.path.join('/tmp', 'output')
@@ -66,7 +77,6 @@ def read_csv_files():
         combined_df = pd.DataFrame()
         app.logger.warning("No dataframes to combine, returning empty dataframe.")
     return combined_df
-
 
 
 
