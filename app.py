@@ -5,24 +5,13 @@ import os
 import re
 import pickle
 import logging
-from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
-# Setup logging to a file with rotation
-if not os.path.exists('logs'):
-    os.makedirs('logs')
+# Setup logging
+logging.basicConfig(level=logging.INFO)
 
-file_handler = RotatingFileHandler('logs/buzzcutleague.log', maxBytes=10240, backupCount=10)
-file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
-file_handler.setLevel(logging.INFO)
-app.logger.addHandler(file_handler)
-
-app.logger.setLevel(logging.INFO)
-app.logger.info('Buzzcut League startup')
-
-# Setup paths
-UPLOAD_FOLDER = '/Users/shraydewan/iCloud Drive (Archive)/Documents/Documents/fantasy/Buzzcut-League'
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'data')
 CACHE_FOLDER = os.path.join('/tmp', 'cache')
 OUTPUT_FOLDER = os.path.join('/tmp', 'output')
 ALLOWED_EXTENSIONS = {'csv'}
@@ -39,16 +28,15 @@ def allowed_file(filename):
 
 def read_csv_files():
     dataframes = []
-    draftdata_folder = os.path.join(app.config['UPLOAD_FOLDER'], 'draftdata')
-    app.logger.info(f"Reading CSV files from {draftdata_folder}")
+    app.logger.info(f"Reading CSV files from {app.config['UPLOAD_FOLDER']}")
     try:
-        files = os.listdir(draftdata_folder)
+        files = os.listdir(app.config['UPLOAD_FOLDER'])
         app.logger.info(f"Files in directory: {files}")
         if not files:
             app.logger.warning("No files found in the directory.")
         for filename in files:
             if filename.endswith(".csv"):
-                file_path = os.path.join(draftdata_folder, filename)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 app.logger.info(f"Reading file {file_path}")
                 try:
                     df = pd.read_csv(file_path)
@@ -77,7 +65,6 @@ def read_csv_files():
         combined_df = pd.DataFrame()
         app.logger.warning("No dataframes to combine, returning empty dataframe.")
     return combined_df
-
 
 
 def replace_names(df):
