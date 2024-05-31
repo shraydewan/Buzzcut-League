@@ -150,8 +150,12 @@ def get_teams_data(league_id, swid, espn_s2, year):
     team_data = []
     for team in league.teams:
         owners = team.owners
-        # Ensure owner names are properly concatenated as strings
-        owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners]) if owners else "N/A"
+        app.logger.info(f"Owners: {owners}")
+        if owners and isinstance(owners, list):
+            owner_names = ', '.join([f"{owner['firstName']} {owner['lastName']}" for owner in owners])
+        else:
+            owner_names = "N/A"
+        app.logger.info(f"Owner names: {owner_names}")
         team_data.append({
             'year': year,
             'owners': owner_names,
@@ -168,6 +172,7 @@ def get_teams_data(league_id, swid, espn_s2, year):
     teams_df = replace_names(teams_df)
     cache_data(teams_df, cache_file)
     return teams_df
+
 
 
 def get_all_teams_data(league_id, swid, espn_s2, years):
