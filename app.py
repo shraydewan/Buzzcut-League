@@ -352,7 +352,7 @@ def head_to_head():
 
 @app.route('/draft_data', methods=['GET', 'POST'])
 def draft_data():
-    years = range(2020, 2024)
+    years = range(2017, 2024)
     df = read_csv_files()
     
     if request.method == 'POST':
