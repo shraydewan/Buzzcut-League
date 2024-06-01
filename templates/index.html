@@ -8,7 +8,7 @@
             padding: 0;
         }
         body {  
-	        font-family: Georgia,Times,Times New Roman,serif; 
+            font-family: Georgia,Times,Times New Roman,serif; 
             background-color: #f4f4f4;
         }
         .topnav {
@@ -47,9 +47,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.75);
             z-index: -1;
         }
+        .countdown {
+            padding: 80px auto;
+        }
+        
         .container {
             max-width: 800px;
             margin: 50px auto;
@@ -98,6 +102,11 @@
         a:hover {
             text-decoration: underline;
         }
+        .countdown {
+            text-align: center;
+            font-size: 30px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -112,6 +121,29 @@
         </div>
         <h1>Buzzcut League</h1>
     </div>
+    <div class="countdown">
+        <h2>Countdown to Draft Day</h2>
+        <p id="countdown-timer"></p>
+    </div>
+    <script>
+        var countDownDate = new Date("Aug 2, 2024 18:00:00").getTime();
+        var x = setInterval(function() {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h "
+          + minutes + "m " + seconds + "s ";
+
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+    </script>
     <div class="container">
         <h2>Box Scores (2020-)</h2>
         <form action="box_scores" method="post">
