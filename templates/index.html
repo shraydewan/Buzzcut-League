@@ -31,7 +31,7 @@
         }
         .section {
             position: relative;
-            padding: 100px;
+            padding: 160px;
             border: 1px solid black;
             color: white;
             background-image: url('{{ url_for('static', filename='images/IMG_0844.jpg') }}');
@@ -50,10 +50,6 @@
             background: rgba(0, 0, 0, 0.75);
             z-index: -1;
         }
-        .countdown {
-            padding: 80px auto;
-        }
-        
         .container {
             max-width: 800px;
             margin: 50px auto;
@@ -61,13 +57,14 @@
             background-color: #fff;
         }
         h1 {
-            color: #999;
+            color: #CFCBCA;
             text-align: center;
             font-size: 70px;
         }
         h2 {
-            color: #555;
+            color: #21295C;
             margin-top: 30px;
+            font-size: 40px;
         }
         form {
             margin-bottom: 20px;
@@ -102,10 +99,28 @@
         a:hover {
             text-decoration: underline;
         }
-        .countdown {
+        .countdown-section {
+            background-color: #CFCBCA;
+            color: #48483A;
             text-align: center;
+            padding: 50px 0;
+        }
+        .countdown {
             font-size: 30px;
-            margin-top: 20px;
+        }
+        .countdown div {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .countdown span {
+            display: block;
+            font-size: 50px;
+            padding: 10px;
+        }
+        .countdown label {
+            display: block;
+            font-size: 20px;
+            color: #A05C7B;
         }
     </style>
 </head>
@@ -121,29 +136,27 @@
         </div>
         <h1>Buzzcut League</h1>
     </div>
-    <div class="countdown">
-        <h2>Countdown to Draft Day</h2>
-        <p id="countdown-timer"></p>
+    <div class="countdown-section">
+        <h2>Draft Day Countdown</h2>
+        <div class="countdown">
+            <div>
+                <span id="days"></span>
+                <label>days</label>
+            </div>
+            <div>
+                <span id="hours"></span>
+                <label>hours</label>
+            </div>
+            <div>
+                <span id="minutes"></span>
+                <label>minutes</label>
+            </div>
+            <div>
+                <span id="seconds"></span>
+                <label>seconds</label>
+            </div>
+        </div>
     </div>
-    <script>
-        var countDownDate = new Date("Aug 2, 2024 18:00:00").getTime();
-        var x = setInterval(function() {
-          var now = new Date().getTime();
-          var distance = countDownDate - now;
-          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          
-          document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h "
-          + minutes + "m " + seconds + "s ";
-
-          if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("countdown-timer").innerHTML = "EXPIRED";
-          }
-        }, 1000);
-    </script>
     <div class="container">
         <h2>Box Scores (2020-)</h2>
         <form action="box_scores" method="post">
@@ -172,5 +185,37 @@
         <h2>Draft Data (2017-)</h2>
         <a href="draft_data">View Draft Data</a>
     </div>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Aug 2, 2024 18:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+          // Get today's date and time
+          var now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Output the result in the corresponding elements
+          document.getElementById("days").innerHTML = days;
+          document.getElementById("hours").innerHTML = hours;
+          document.getElementById("minutes").innerHTML = minutes;
+          document.getElementById("seconds").innerHTML = seconds;
+
+          // If the count down is over, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.querySelector(".countdown").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+    </script>
 </body>
 </html>
