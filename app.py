@@ -56,7 +56,6 @@ def read_csv_files():
     if dataframes:
         combined_df = pd.concat(dataframes, ignore_index=True)
         app.logger.info(f"Combined DataFrame columns: {combined_df.columns}")
-        # Ensure the 'Year' column is consistently the first column
         cols = combined_df.columns.tolist()
         cols.insert(0, cols.pop(cols.index('Year')))
         combined_df = combined_df[cols]
