@@ -7,17 +7,15 @@
             margin: 0;
             padding: 0;
         }
-        body {
-            font-family: Arial, sans-serif;
+        body {  
+	        font-family: Georgia,Times,Times New Roman,serif; 
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
         }
         .topnav {
-            background-color: #333;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1;
         }
         .topnav a {
             float: left;
@@ -31,14 +29,9 @@
             background-color: #ddd;
             color: black;
         }
-        .topnav a.active {
-            background-color: #04AA6D;
-            color: white;
-        }
         .section {
             position: relative;
-            padding: 80px;
-            border-radius: 8px;
+            padding: 100px;
             border: 1px solid black;
             color: white;
             background-image: url('{{ url_for('static', filename='images/IMG_0844.jpg') }}');
@@ -54,7 +47,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            background: rgba(0, 0, 0, 0.8);
             z-index: -1;
         }
         .container {
@@ -62,11 +55,9 @@
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
         }
         h1 {
-            color: white;
+            color: #999;
             text-align: center;
             font-size: 70px;
         }
@@ -110,15 +101,15 @@
     </style>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="draft_data">Drafts</a>
-        <a href="head_to_head">Head to Head Records</a>
-        <a href="records">All Time Records</a>
-        <a href="teams">Team Data</a>
-        <a href="box_scores">Box Scores</a>
-    </div>
     <div class="section">
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a href="draft_data">Drafts</a>
+            <a href="head_to_head">Head to Head Records</a>
+            <a href="records">All Time Records</a>
+            <a href="teams">Team Data</a>
+            <a href="box_scores">Box Scores</a>
+        </div>
         <h1>Buzzcut League</h1>
     </div>
     <div class="container">
