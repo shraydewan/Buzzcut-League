@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Buzzcut League</title>
+    <!-- Include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-... (shortened)" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         html, body {
             margin: 0;
@@ -34,7 +36,6 @@
             padding: 160px;
             border: 1px solid black;
             color: white;
-            background-image: url('{{ url_for('static', filename='images/IMG_0844.jpg') }}');
             background-size: cover;
             background-position: center;
             overflow: hidden;
@@ -52,7 +53,7 @@
         }
         .container {
             max-width: 800px;
-            margin: 50px auto;
+            margin: 30px auto;
             padding: 20px;
             background-color: #fff;
         }
@@ -122,10 +123,32 @@
             font-size: 20px;
             color: #002500;
         }
+        .icon-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px 0;
+            padding: 0 20px;
+        }
+        .icon-box {
+            background-color: #21295C;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            width: 18%;
+            text-decoration: none;
+        }
+        .icon-box:hover {
+            background-color: #3b486b;
+        }
+        .icon-box i {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="section">
+    <div class="section" style="background-image: url('{{ url_for('static', filename='images/IMG_0844.jpg') }}');">
         <div class="topnav">
             <a class="active" href="#home">Home</a>
             <a href="draft_data">Drafts</a>
@@ -157,34 +180,27 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <h2>Box Scores (2020-)</h2>
-        <form action="box_scores" method="post">
-            <label for="year">Select Year:</label>
-            <select id="year" name="year">
-                {% for year in years %}
-                    <option value="{{ year }}">{{ year }}</option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Get Box Scores">
-        </form>
-        <h2>Team Data (2020-)</h2>
-        <form action="teams" method="post">
-            <label for="year">Select Year:</label>
-            <select id="year" name="year">
-                {% for year in years %}
-                    <option value="{{ year }}">{{ year }}</option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Get Team Data">
-        </form>
-        <h2>All Time Records (2020-)</h2>
-        <a href="records">View Records</a>
-        <h2>Head to Head Records (2020-)</h2>
-        <a href="head_to_head">View Head to Head Records</a>
-        <h2>Draft Data (2017-)</h2>
-        <a href="draft_data">View Draft Data</a>
-    </div>
+    <div class="icon-boxes">
+        <a href="draft_data" class="icon-box">
+            <i class="fas fa-pencil-alt"></i>
+            <p>Drafts</p>
+        </a>
+        <a href="head_to_head" class="icon-box">
+            <i class="fas fa-user-friends"></i>
+            <p>Head to Head</p>
+        </a>
+        <a href="records" class="icon-box">
+            <i class="fas fa-trophy"></i>
+            <p>All Time Records</p>
+        </a>
+        <a href="teams" class="icon-box">
+            <i class="fas fa-users"></i>
+            <p>Team Data</p>
+        </a>
+        <a href="box_scores" class="icon-box">
+            <i class="fas fa-chart-line"></i>
+            <p>Box Scores</p>
+        </a>
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("Aug 2, 2024 18:00:00").getTime();
